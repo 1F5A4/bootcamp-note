@@ -11,7 +11,7 @@ public class Ex04_Printf {
 		System.out.println();
 		// System.out.printf("%d", 'A'); 
 		// === Runtime error ===
-	    //     - 문자는 %d로 출력 불가
+	    	//     - 문자는 %d로 출력 불가
 		
 		System.out.printf("%d\n", 220000000L);
 		// C랑 달리 ld가 아니라 그냥 d네...
