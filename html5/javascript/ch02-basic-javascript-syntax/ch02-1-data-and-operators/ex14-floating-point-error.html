@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Floating Point Error</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>부동소수점 오차 문제 (Floating Point Precision Error)</h3>
+
+	<script type="text/javascript">
+		var a;
+		a = 0.1 + 0.2;  // 부동소수점 계산 → 정확한 0.3 아님, 정확한 2진수로 변환 불가
+		console.log(a === 0.3);   // false, 0.30000000000000004, 정밀도 문제
+		console.log(a);
+		
+		// 정확한 비교 방법 (예시)
+		console.log(Math.abs(a - 0.3) < Number.EPSILON); // true
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 부동소수점 오차 (Floating Point Precision Error)
+		1. 원인
+			- JavaScript는 모든 숫자를 64비트 부동소수점(IEEE 754)으로 처리
+			- 이진수로 정확히 표현할 수 없는 10진수가 존재함 (예: 0.1, 0.2 등)
+
+		2. 결과
+			- 0.1 + 0.2 === 0.3 -> false
+			- 실제 계산 결과: 0.30000000000000004
+
+		3. 해결 방법
+			- 허용 오차 범위(Epsilon)로 비교
+				- Math.abs(a - b) < Number.EPSILON
+				- Math.abs(a - b) < 0.000001 등
+
+		4. 실무 활용
+			- 금융, 통계, 계산 정확도가 중요한 경우 반드시 오차 허용 범위 체크
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

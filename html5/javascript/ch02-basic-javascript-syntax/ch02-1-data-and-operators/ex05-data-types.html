@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Data Types</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>자바스크립트의 데이터 타입 및 typeof 연산자</h3>
+
+	<script type="text/javascript">
+		var a, b;
+
+		// typeof(): 타입을 문자열로 반환
+
+		b = '자바';
+		a = typeof (b);
+		console.log(a); // string
+
+		b = 50;
+		a = typeof (b);
+		console.log(a); // number
+
+		b = true;
+		a = typeof (b);
+		console.log(a); // boolean
+
+		b = function() {
+		};
+		a = typeof (b);
+		console.log(a); // function
+
+		b = {};
+		a = typeof (b);
+		console.log(a); // object
+
+		b = null;
+		a = typeof (b);
+		console.log(a);
+		// object -> null은 실제로는 비어 있는 참조지만, typeof 결과는 'object' *****
+
+		var x;
+		a = typeof (b);
+		console.log(a); // undefined
+		console.log(x); // undefined
+		// 초기화 하지 않은 변수의 값은 undefined
+		// undefined는 '값'이자 '타입'이다.
+
+		a = typeof (y);
+		console.log(a); // undefined
+		// 선언 자체가 없는 변수는 undefined 타입
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 자바스크립트의 데이터 타입 및 typeof 연산자
+		1. typeof 연산자
+			- 피연산자의 타입을 문자열로 반환
+			- 괄호는 생략 가능하지만, 가독성을 위해 사용하는 경우도 있음
+
+		2. 기본 타입
+			- string -> 문자열
+			- number -> 숫자
+			- boolean -> 논리형
+			- function -> 함수
+			- object -> 객체, 배열, null 포함
+
+		3. 특별한 값: null *****
+			- typeof(null) -> 'object'
+			- 초기 버그로 인해 null도 object로 처리됨 (현재까지 유지됨)
+			- 실제로는 "값이 없음을 의미하는 객체 참조 값"
+
+		4. undefined와 선언되지 않은 변수
+			- var로 선언만 하고 초기화하지 않으면 -> undefined
+			- 정의하지 않은 식별자에 typeof를 사용하면 -> 'undefined' 반환
+			- 단, 정의하지 않은 식별자를 직접 접근하면 ReferenceError 발생
+
+		5. undefined
+			- 값이자 타입 -> typeof(undefined) === 'undefined'
+			- 변수 선언은 되었지만 값이 대입되지 않은 상태
+
+     
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

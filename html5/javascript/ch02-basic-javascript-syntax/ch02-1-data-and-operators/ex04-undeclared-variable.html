@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Undeclared Variable</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>선언되지 않은 변수와 암묵적 전역 변수</h3>
+
+	<script type="text/javascript">
+		function sub() {
+			var a = 10;
+			b = 200; // var, let 없이 선언된 변수는 '암묵적 전역 변수'
+
+			console.log(a, b); // 10 200
+		}
+
+		function fun() {
+			// console.log(a); 
+			// === ReferenceError ===
+			//     - var a는 sub()의 변수 (var는 함수 스코프)
+			
+			console.log(b); // 200. 
+			// 함수 호출 순서에 따라 결과가 나오거나 에러 발생
+		}
+		
+		// fun();
+		// === ReferenceError ===
+		//     - 함수 호출 순서에 따라 에러 발생
+		
+		sub();
+		fun();
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 선언되지 않은 변수와 암묵적 전역 변수
+		1. 변수 선언 없이 대입
+			- var, let, const 없이 변수를 대입하면 '암묵적 전역 변수'로 간주됨
+			- 함수 내부에서 선언 없이 대입하더라도, 전역 객체(window)의 프로퍼티로 자동 생성됨 
+				- 즉, window.b = 200 과 동일
+			- !! 단, strict mode가 아닐 때만 자동 생성됨 !! -> strict mode : ReferenceError
+
+		2. 스코프 관점
+			- var는 함수 스코프 -> 해당 함수 내에서만 유효
+			- 선언 없이 할당된 변수는 전역 스코프 -> 모든 함수에서 접근 가능
+
+		3. 실행 순서의 영향
+			- 암묵적 전역 변수라도, 해당 변수를 생성한 함수가 먼저 실행되어야 접근 가능
+			- 실행 순서에 따라 ReferenceError 발생 가능성 있음
+				- 해당 변수를 생성한 함수가 실행되기 전에는 암묵적 전역 변수도 존재하지 않음 -> ReferenceError 발생
+
+		4. strict mode 사용 시
+			- 선언되지 않은 변수에 값을 대입하면 바로 ReferenceError 발생
+			- 명시적 선언(var, let, const)을 반드시 요구함
+
+		5. 권장 사항
+			- 항상 var, let, const로 명시적으로 선언
+			- 암묵적 전역 변수는 버그 유발 가능성이 높아 사용을 지양해야 함
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

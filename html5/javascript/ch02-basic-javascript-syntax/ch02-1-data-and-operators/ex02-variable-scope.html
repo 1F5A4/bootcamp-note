@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Variable Scope</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>변수의 범위(variable scope)</h3>
+
+	<script type="text/javascript">
+		var a = 10; // 전역 변수 
+
+		function fun() { // 함수 선언
+			a = a + 10;
+
+			b = 100; // var, let 없이 선언 된 변수는 '전역 변수' *****
+
+			if (true) {
+				var x = 5; // var로 선언한 변수의 범위는 if() 블록이 아니라 x가 선언된 함수이다
+			}
+
+			console.log(x); // 5
+
+			if (true) {
+				let y = 10; // let로 선언한 변수의 범위는 if() 블록이다
+			}
+
+			// console.log(y); 
+			// === ReferenceError ===
+			//     - let 변수는 블록({ }) 밖에서 접근 불가
+		}
+
+		function sub() {
+			console.log('sub-a : ', a);
+			console.log('sub-b : ', b);
+
+			// console.log(x);
+			// === ReferenceError ===
+			//     - x는 fun() 함수 내부에서 선언된 지역변수
+			// 	   - 다른 함수에서 접근 불가
+		}
+
+		// 함수 호출
+		fun();
+		sub();
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 변수의 스코프(scope)
+		1. var
+			- 함수 스코프(function scope)
+			- 블록(if, for 등)을 무시하고 함수 단위로 스코프를 가짐
+		
+		2. let / const
+			- 블록 스코프(block scope)
+			- 선언된 블록({ }) 내부에서만 접근 가능
+			- 블록 외부에서는 ReferenceError 발생
+		
+		3. 암묵적 전역 변수
+			- var, let, const 없이 변수에 값을 대입하면 '전역 변수'로 간주
+			- 코드 상에서 실수가 많이 발생하므로 지양!
+			- strict 모드에서는 에러 발생 
+		
+		4. 전역 변수 vs 지역 변수
+			- 전역 변수: 함수 외부에서 선언된 변수 또는 암묵적 전역 변수
+			- 지역 변수: 함수나 블록 내부에서 선언된 변수
+     
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

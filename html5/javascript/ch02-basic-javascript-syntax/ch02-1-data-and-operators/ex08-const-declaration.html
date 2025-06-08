@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Const Declaration</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>상수 - const</h3>
+
+	<script type="text/javascript">
+		const PI = 3.141592;
+		
+		// const sub = 10;  
+		// === SyntaxError ===
+		// 	   - const 변수명과 함수명은 동일할 수 없다 -> 네이밍 충돌
+
+		function sub() {
+			console.log(PI);
+
+			// PI = 3.14;  
+			// === TypeError ===
+			// 	   - const는 재할당 불가능
+			
+			const x = 10;
+			
+			// var x = 20;  
+			// === SyntaxError ===
+			// 	   - 같은 스코프에 동일한 이름의 변수 재선언 불가
+			
+			// const a;  
+			// === SyntaxError=== 
+			//  	   - const 변수는 선언과 동시에 반드시 초기화 필요
+
+			if (true) {
+				const a = 5;
+			}
+			
+			// console.log(a);  
+			// === ReferenceError ===
+			// 	   - const는 블록 스코프 -> if 블록 밖에서는 접근 불가
+
+			// const로 선언된 배열의 내용이나 객체의 속성은 보호되지 않음
+			const arr = [ 'HTML', 'CSS' ]; // 배열
+			arr[0] = 'javascript'; // const 배열의 값을 변경하거나 추가 가능
+			console.log(arr); // ['javascript', 'CSS']
+			
+			const obj = {
+				subject : 'java'
+			}; // object
+			console.log(obj.subject); // java 
+			obj.subject = 'HTML'; // const 객체의 속성 값은 변경 가능, 속성은 불가능 
+			console.log(obj.subject); // HTML
+		}
+
+		sub();
+	</script>
+	
+	
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 상수 선언 (const)
+		1. const 선언
+			- 재할당 불가능한 상수 선언
+			- 선언과 동시에 반드시 초기화 필요
+			- 동일한 이름으로 변수나 함수 중복 선언 불가
+
+		2. 스코프
+			- const는 블록 범위(block scope)를 가짐
+			- if, for 등 블록 내부에서만 유효
+
+		3. 배열/객체의 내부 변경
+			- const로 선언된 배열/객체는 참조(주소)가 고정됨 *****
+			- 내부 요소(속성, 값)는 자유롭게 변경 가능
+			- 불변 객체는 아님 -> Object.freeze() 필요
+
+		4. 네이밍 충돌
+			- const 변수명과 동일한 이름의 함수 선언 불가
+			- 변수, 함수 간 충돌 발생 시 SyntaxError
+
+		5. const와 let 비교
+			- 둘 다 블록 스코프
+			- let은 값 변경 가능, const는 불가
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

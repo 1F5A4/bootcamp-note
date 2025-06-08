@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Explicit Type Conversion</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>형 변환 - 명시적 형변환 (Explicit Type Conversion)</h3>
+
+	<script type="text/javascript">
+		var a, b;
+
+		a = '123';
+		console.log(typeof (a)); // string
+
+		b = a + 10;
+		console.log(b); // '12310': 문자열 + 숫자 -> 문자열 결합
+
+		// 명시적 형변환
+		// Number() 함수를 이용하여 문자를 숫자로 변환 
+		b = Number(a) + 10;
+		console.log(b); // 133
+
+		console.log(Number('1,000')); // NaN -> ','가 있으면 숫자로 변경 불가
+
+		a = 100;
+		b = String(a); // 숫자를 문자열로 변환
+		console.log(typeof (b)); // string 
+
+		a = 'true'; // 문자열 'true'
+		console.log(typeof (a)); // string
+
+		b = Boolean(a); // 빈 문자열이 아니므로 true
+		console.log(typeof (b)); // boolean;
+	</script>
+	
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 명시적 형 변환 (Explicit Type Conversion)
+		1. Number()
+			- 문자열 -> 숫자로 변환
+			- 숫자로 변환 불가능한 문자열 -> NaN 반환
+			- 예: Number('123') -> 123
+			      Number('1,000') -> NaN (쉼표 포함 시 숫자 변환 불가)
+
+		2. String()
+			- 숫자, 논리형 등 -> 문자열로 변환
+			- 예: String(100) -> '100'
+
+		3. Boolean()
+			- 값 -> true 또는 false로 변환
+			- 빈 문자열, 0, null, undefined, NaN -> false
+			- 그 외는 모두 true
+			- 예: Boolean('true') -> true (문자열 내용과 상관없이 true)
+
+		4. typeof
+			- 변환 결과의 타입 확인에 사용
+			- typeof(Boolean('false')) -> 'boolean'
+
+		5. 암묵적 형 변환과의 구분
+			- 명시적 변환은 개발자가 직접 의도한 변환
+			- 코드의 안정성과 명확성을 높이기 위해 권장됨
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

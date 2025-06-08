@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Logical Operators</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>논리 연산자 (Logical Operators)</h3>
+
+	<script type="text/javascript">
+		var a = "";
+
+		// 값이 "", null, undefined, NaN, 0 등은 거짓이다.
+		if (a) {
+			console.log('참.');
+		} else {
+			console.log('거짓.');
+		}
+
+		a = 0;
+		if (a) {
+			console.log(a, '참.');
+		} else {
+			console.log(a, '거짓.');
+		}
+
+		// &&, ||는 단축연산을 한다. - if를 줄이기 위해 사용한다! *****
+		a = 0 && 'css'; // 0, 앞이 거짓이므로 0을 반환(그 값을 반환)
+		console.log(a);
+
+		a = 'html' && true; // true, true 반환
+		console.log(a);
+
+		a = 'html' || 'css'; // 앞이 참이므로 0을 반환, 'html'
+		console.log(a);
+
+		a = 'html' || true; // 'html'
+		console.log(a);
+
+		a = false || 'css'; // 'css', 단축연산 X
+		console.log(a);
+
+		a = 0 || 'css'; // 'css', 단축연산 X
+		console.log(a);
+
+		a = 10 || 'css'; // 10, 단축연산 O 
+		console.log(a);
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 논리 연산자 (Logical Operators)
+		1. falsy 값
+			- 조건식에서 false로 평가되는 값들
+			- "", 0, null, undefined, NaN, false
+
+		2. truthy 값
+			- falsy가 아닌 모든 값
+			- 예: "hello", 1, [], {}, true 등
+
+		3. &&
+			- AND (그리고)
+			- 앞의 값이 falsy이면 -> 그 값을 반환 (단축 평가)
+			- 앞의 값이 truthy이면 -> 뒤의 값을 반환
+
+		4. ||
+			- OR (또는)
+			- 앞의 값이 truthy이면 -> 그 값을 반환 (단축 평가)
+			- 앞의 값이 falsy이면 -> 뒤의 값을 반환
+
+		※ 단축 평가 (short-circuit evaluation)
+			- 조건에 따라 불필요한 연산 생략
+			- 예: a && b -> a가 거짓이면 b는 평가되지 않음
+			- 예: a || b -> a가 참이면 b는 평가되지 않음
+
+		※ 실무 활용
+			- 기본값 설정: let name = input || 'default';
+			- 조건부 실행: user && user.login();
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

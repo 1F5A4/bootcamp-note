@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Variable Hoisting</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>변수의 호이스팅(hoisting)</h3>
+	<p>호이스팅 : 변수의 정의가 그 범위에 따라 선언과 할당으로 분리되는 것을 의미</p>
+
+	<script type="text/javascript">
+		function sub() {
+			// console.log(a);  
+			// === ReferenceError===
+			//     - 선언된 적 없음 
+
+			console.log(x);
+			// Hoisting
+			// 선언은 끌어올려지지만, 초기화는 안 됨 -> undefined
+			// undefined는 에러가 아니다 *****
+
+			var x = 3;
+
+			// console.log(y); 
+			// Hoisting
+			// 초기화 전에 접근하면 TDZ 발생
+			//     - TDZ; Temporal Dead Zone 때문에 error, const도 같음
+			// === ReferenceError ===
+			//     - Hoisting되지만 초기화 전에 접근함	
+
+			let y = 2;
+
+			console.log(x); // 3
+			console.log(y); // 2
+		}
+
+		sub();
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 변수의 호이스팅(hoisting)
+		1. var
+			- 선언이 끌어올려짐 -> 함수 시작 시점에 선언된 것으로 처리됨
+			- 초기화는 원래 위치에서 이뤄짐 -> 호이스팅 시 undefined 상태
+
+		2. let / const
+			- 선언도 호이스팅되지만, 초기화 전에 접근 불가 *****
+			- 선언 ~ 초기화 구간은 TDZ(Temporal Dead Zone)이라고 함
+			- TDZ 구간에서 접근하면 ReferenceError 발생
+
+		3. 일반적인 현상
+			- 변수 선언 이전에 접근할 수 있느냐 여부는 선언 방식(var, let, const)에 따라 다름
+			- 호이스팅은 선언과 초기화 시점이 나뉘어 발생하는 자바스크립트의 기본 동작 방식임
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

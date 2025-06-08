@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ternary Operator</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>삼항 연산자 (Ternary Operator)</h3>
+
+	<p>
+		<input type="text" id="inputs" placeholder="나이를 입력하세요">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+	<hr>
+	<div id="resultLayout"></div>
+
+	<script type="text/javascript">
+		function result() {
+			// let age = document.querySelector('#inputs').value;  // js Selector 찾기 , id는 다른 방법으로 접근 가능
+			// document = body 영역을 의미, 12번 라인의 inputs으로 들어감
+
+			let age = document.getElementById('inputs').value;
+			
+			// 빈 문자열 입력 시 유효성 검사
+			if (!age) { // if(age == "") {
+				alert('나이를 입력하세요...'); 
+				// 0 입력 시 => 문자로 인식 => '참'으로 나옴... 
+				// 모든 것을 다 문자로 인식, 이미지&파일 제외
+				return;
+			}
+			
+			// 삼항 연산자로 성인/미성년자 판단
+			let s = age >= 19 ? '성인' : '미성년자';
+			let msg;
+			
+			// 템플릿 리터널 + innerHTML로 결과 출력
+			msg = `나이가 ${age} 이므로 <label style="color:red;">${s}</label> 입니다.`;
+			// innerHTML : HTML 태그 안에 집어넣기 
+			document.querySelector('#resultLayout').innerHTML = msg; 
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 삼항 연산자 (Ternary Operator)
+		1. 문법
+			- 조건식 ? 참일 때의 값 : 거짓일 때의 값
+			- if-else보다 간단하게 조건 분기 가능
+
+		2. 특징
+			- 표현식으로 값을 반환
+			- 가독성을 해치지 않는 선에서 간결하게 사용
+
+		3. 예시
+			let msg = age >= 19 ? '성인' : '미성년자';
+
+		4. 실무 활용
+			- 조건에 따른 출력, 렌더링, 변수 할당 등
+
+		5. 주의
+			- 너무 복잡한 삼항 연산자는 오히려 가독성 저해 -> if-else로 대체 고려
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>
