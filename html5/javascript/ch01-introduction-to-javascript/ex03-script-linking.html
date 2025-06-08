@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Script Linking</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script type="text/javascript" src="test.js"></script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 외부 자바스크립트 파일을 포함하는 경우
+		- <script type="text/javascript" src="자바스크립트 파일.js"></script>
+			- !! 이 경우에는 <script> 태그 안에 다른 스크립트를 추가하지 않는다 !!
+		
+-------------------------------------------------------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+	var n;
+
+	n = add(10, 7);
+	console.log(n);
+</script>
+</head>
+<body>
+	<h3>자바 스크립트 파일</h3>
+</body>
+</html>

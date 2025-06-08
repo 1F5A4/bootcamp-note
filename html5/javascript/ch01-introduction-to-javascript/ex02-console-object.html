@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Console Object</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script type="text/javascript">
+	var a, b, c;
+
+	a = 10;
+	b = 5;
+	// c = a + d;
+	d = a + b;
+
+	console.log(a);
+	console.log(a, b, d); // 개발자 도구 콘솔창에 로그 출력
+</script>
+</head>
+<body>
+	<h3>console 객체</h3>
+	<br>디버깅 할 때만 씀
+
+
+	<!-- -------------------------------------------------------------------------------
+		
+		* 여기서 잠깐!
+			- <hr><br>과 <hr /><br /> 둘 다 작동하지만...
+				1. HTML5 기준에서는 <hr>과 <br>은 void elements
+					- HTML5에서는 '/' 생략이 기본 
+				2. 그렇다면 왜 사용가능하느냐?
+					=> XHTML 호환성 때문이었음!
+						- XML 문법 강제 -> <br />, <hr />처럼 닫아야 했었음
+				3. React(JSX) 같은 XML 기반 환경에서는 여전히 닫아줘야함
+					- 여전히 XML을 따름
+					
+	-------------------------------------------------------------------------------- -->
+
+</body>
+</html>
