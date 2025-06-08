@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>숫자로 변환 : Number()</h3>
+
+	<script type="text/javascript">
+		var a, b;
+
+		a = '123';
+		b = Number(a); // 123
+		console.log(b);
+		console.log(b === 123); // true
+
+		a = '123.57';
+		b = Number(a); // 123.57
+		console.log(b); // Number는 실수로도 변환 가능
+
+		a = '1,234';
+		b = Number(a); // NaN - 쉼표 포함 시 전체 변환 실패
+		console.log(b);
+
+		a = '123a';
+		b = Number(a); // NaN - 숫자 외 문자 포함
+		console.log(b);
+
+		a = '';
+		b = Number(a); // 0 - 빈 문자열은 0으로 처리됨
+		console.log(b);
+
+		a = null;
+		b = Number(a); // 0 - null도 0으로 변환됨
+		console.log(b);
+
+		a = 'abc';
+		b = Number(a); // NaN - 순수 문자열은 변환 불가
+		console.log(b);
+
+		a = '0x11';
+		b = Number(a); // 17 - 16진수 문자열은 10진수로 변환됨
+		console.log(b);
+	</script>
+	
+	
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 문자열을 숫자로 변환하는 방법 : Number()
+		1. 기본 동작
+			- 문자열을 숫자로 변환
+			- 정수, 실수 모두 변환 가능
+
+		2. 특징
+			- 전체 문자열이 숫자 형식이어야 변환 가능
+			- 숫자 외 문자가 하나라도 포함되면 -> NaN
+			- 쉼표(,)가 포함된 숫자 -> NaN
+			- 빈 문자열('') -> 0
+			- null -> 0
+			- '0x'로 시작하는 16진수 문자열 -> 10진수로 변환됨
+
+		3. 예시
+			- '123' -> 123
+			- '123.57' -> 123.57
+			- '1,234' -> NaN
+			- '123a' -> NaN
+			- '' -> 0
+			- null -> 0
+			- 'abc' -> NaN
+			- '0x11' -> 17
+
+-------------------------------------------------------------------------------------------------------------------- -->
+	
+</body>
+</html>

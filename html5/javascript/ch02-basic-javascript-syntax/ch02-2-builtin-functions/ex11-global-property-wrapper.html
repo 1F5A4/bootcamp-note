@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Global Property Wrapper</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+	<h3>전역 속성</h3>
+
+	<script type="text/javascript">
+		// Wrapper Object : 숫자, 문자열 등 원시 타입의 property에 접근하기 위해 생성되는 '임시 객체'
+
+		// 원시 타입 (string, number, boolean 등)
+		var s = '자바스크립트'; // 문자열 생성 (원시 타입) 
+		var len = s.length; // String Wrapper Object를 통해 length 속성 사용
+		console.log('문자열 길이 : ' + len);
+
+		// 객체 타입 (String 객체 생성자 사용)
+		var s2 = new String('자바스크립트');
+		len = s.length; // 원시형의 length 접근과 동일
+		console.log('문자열 길이 : ' + len);
+
+		// 값 비교
+		console.log(s == s2); // true, 리터널 값과 String 객체를 동일하게 본다
+		console.log(s === s2); // false, 의미 자체는 다르다! (타입까지 비교)
+
+		// 타입 확인
+		console.log(typeof s); // string (원시 타입)
+		console.log(typeof s2); // object (객체 타입)
+
+		// 전역 값 속성 - NaN 관련
+		console.log(NaN === NaN); // false, Not a Number이기 때문에 비교 자체가 '불가능'
+		console.log(isNaN(NaN)); // true, isNaN 함수로 확인해야 함
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 원시 타입과 객체 타입의 차이, 전역 속성에 대한 이해
+		1. 원시 타입 (Primitive Type)
+			- string, number, boolean, null, undefined, symbol, bigint
+			- 값 자체를 저장하며, 불변성을 가짐
+
+		2. Wrapper Object (포장 객체)
+			- 원시 타입의 속성(property)이나 메서드에 접근하려고 할 때,
+			  내부적으로 일시적으로 생성되는 객체
+			- 예: 'abc'.length -> new String('abc') 객체가 일시 생성됨
+
+		3. 객체 타입
+			- new String(), new Number(), new Boolean() 등으로 생성
+			- typeof 결과는 'object'
+
+		4. 전역 속성(Global Property)
+			- NaN : Not-a-Number, 숫자가 아님을 의미
+			- isNaN(value) : 값이 NaN인지 판별 (true/false 반환)
+			- NaN === NaN은 false → NaN은 자기 자신과도 같지 않음
+
+		5. 주의사항
+			- 원시 타입과 객체 타입은 == 비교 시 같지만, === 비교 시 다름
+			- typeof 연산자로 타입을 확인할 수 있음
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer Functions</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<script type="text/javascript">
+	document.write('<h3>타이머 함수 예제 - setTimeout()과 setInterval()</h3>');
+
+	var n = 0;
+	function sub() {
+		document.write('<p>실행 횟수 - ' + (++n) + '</p>');
+	}
+
+	// setTimeout(): 3초 후에 alert 실행 (한 번만 실행됨)
+	// setTimeout('alert('환영합니다. !!!'');', 3000);
+	
+	// 실제 개발에서는 문자열을 넘기기보다는 '함수 자체'를 인자로 넘기는 방식이 더 안전하고 표준
+	setTimeout(function() {
+		alert('환영합니다. !!!!');
+	}, 3000);
+	
+	// 혼자서 화살표 함수로 바꿔보기!
+	// setTimeout(() => alert('환영합니다. !!!'), 3000);
+	
+	// setInterval(): 1초마다 sub() 함수 반복 실행 (무한반복)
+	setInterval('sub();', 1000);
+</script>
+
+</head>
+<body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 일정 시간 후에 또는 일정 주기로 코드 실행하기 위한 함수
+		1. setTimeout(function or string, milliseconds)
+			- 지정한 시간(ms)이 지나면 딱 한 번 실행됨
+			- 반복되지 않으며, 한 번 실행 후 끝남
+
+		2. setInterval(function or string, milliseconds)
+			- 지정한 시간(ms)마다 주기적으로 계속 실행됨
+			- 중단하지 않는 한 무한 반복됨
+
+		3. 공통 사항
+			- 첫 번째 인자로 함수 이름 또는 문자열 형태의 코드 입력 가능
+			- 문자열 전달은 권장되지 않음 (보안 및 유지보수 측면)
+
+		4. 주의사항
+			- setTimeout, setInterval 모두 클리어 가능
+				- clearTimeout(timerID), clearInterval(timerID)
+			- document.write는 실행 후 기존 DOM을 지우므로 동적 콘텐츠 삽입에는 적합하지 않음
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

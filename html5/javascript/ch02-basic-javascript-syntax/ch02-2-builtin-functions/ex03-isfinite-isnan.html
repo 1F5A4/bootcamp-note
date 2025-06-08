@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>isFinite, isNaN</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>문자열이 숫자로 이루어져 있는지 확인</h3>
+	<p>isFinite(), isNaN() 활용</p>
+
+	<script type="text/javascript">
+		var a, b;
+
+		a = '123';
+		b = isFinite(a); // true - 숫자 형식 문자열
+		console.log(b);
+
+		a = '123.57';
+		b = isFinite(a); // true - 소수도 가능 
+		console.log(b);
+
+		a = '1,234';
+		b = isFinite(a); // false - (,)는 숫자가 아니다
+		console.log(b);
+
+		a = '123a';
+		b = isFinite(a); // false - 문자 포함 
+		console.log(b);
+
+		a = '123';
+		b = isNaN(a); // false - 숫자 형식 문자열
+		console.log(b);
+
+		a = '123.57';
+		b = isNaN(a); // false - 숫자 형식 문자열
+		console.log(b);
+
+		a = '';
+		b = isNaN(a); // false - 빈 문자열은 0으로 해석됨
+		console.log(b);
+
+		a = '1,234';
+		b = isNaN(a); // true - 쉼표 포함 시 NaN
+		console.log(b);
+
+		a = '123a';
+		b = isNaN(a); // true - 문자 포함 시 NaN
+		console.log(b);
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 문자열이 숫자로 구성되어 있는지 확인하는 방법
+		1. isFinite(value)
+			- 전달된 값이 '유한한' 수로 변환 가능한 경우 -> true
+			- 숫자 형식 문자열도 변환 가능
+			- 쉼표(,)나 문자 포함 시 -> false
+
+		2. isNaN(value)
+			- 전달된 값이 NaN인지 확인
+			- 숫자로 변환 불가능한 값일 때 -> true
+			- 숫자 형식이면 false
+			- '' (빈 문자열) -> false (숫자 0으로 해석됨)
+
+		3. 주의할 점
+			- isFinite, isNaN은 내부적으로 Number()로 한 번 변환한 뒤 검사 *****
+			- 따라서 문자열이라도 숫자로 바뀔 수 있으면 isFinite는 true, isNaN은 false 반환
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

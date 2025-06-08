@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Encoding Decoding</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>인코딩과 디코딩</h3>
+
+	<script type="text/javascript">
+		var s = 'seoul?자바&123+4';
+		var out;
+
+		// 일부 특수문자(@ * - _ + . /)와 한글 등을 유니코드 방식으로 인코딩 (잘 안 씀)
+		out = escape(s);
+		console.log(out); // seoul %3F %uC790 %uBC14 %26 123+4
+
+		// 영문자, 숫자, 인터넷 주소에 사용되는 문자(: / ? = + & 등)를 제외하고 인코딩
+		out = encodeURI(s);
+		console.log(out); // seoul?%EC%9E%90%EB%B0%94&123+4
+
+		// 영문자, 숫자를 제외한 문자를 모두 인코딩(개별 파라미터 값을 인코딩할 때 사용)
+		out = encodeURIComponent(s); // 암기할 것 *****
+		console.log(out); // seoul%3F%EC%9E%90%EB%B0%94%26123%2B4
+
+		// 인코딩된 문자열을 다시 디코딩
+		out = decodeURIComponent(out);
+		console.log(out); // seoul?자바&123+4
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 문자열을 URL에 포함시키기 위해 특수문자를 인코딩할 수 있음
+		1. escape(string)
+			- 영문자, 숫자, 일부 특수문자를 제외한 나머지를 인코딩
+			- 유니코드는 %uXXXX 형식으로 표현
+			- 현재는 거의 사용되지 않음 (deprecated) *****
+
+		2. encodeURI(string)
+			- 인터넷 주소 전체(URL)에서 사용할 수 있는 문자는 인코딩하지 않음
+			- 전체 주소(URL)를 인코딩할 때 사용
+			- 제외 대상: :, /, ?, =, &, #
+
+		3. encodeURIComponent(string)
+			- URI 구성 요소 하나만 인코딩할 때 사용
+			- 영문자와 숫자를 제외한 거의 모든 문자를 인코딩
+			- 가장 많이 사용됨 (암기) *****
+
+		4. decodeURIComponent(string)
+			- encodeURIComponent로 인코딩된 문자열을 다시 디코딩함
+
+		5. 주의사항
+			- encodeURI는 전체 주소용, encodeURIComponent는 개별 파라미터용
+			- escape는 더 이상 사용하지 않음
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

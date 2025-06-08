@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>parseInt, parseFloat</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>문자열을 숫자로 변환 : parseInt, parseFloat</h3>
+
+	<script type="text/javascript">
+		var a, b;
+
+		a = '123';
+		console.log(1 === 123); // false (타입 다름)
+		console.log(a + 10); // 123310: 문자열 + 숫자 -> 문자열 결합
+
+		b = parseInt(a); // 문자열을 숫자로 변환
+		console.log(b === 123); // true
+		console.log(b + 10); // 133
+
+		a = '1,234';
+		b = parseInt(a); // 1 - 콤마 이후는 무시
+		console.log(a, b);
+
+		a = '1,234';
+		b = Number(a); // NaN - 전체 파싱 실패
+		console.log(a, b);
+
+		a = '123a';
+		b = parseInt(a); // 123 - 문자 전까지만 처리 
+		console.log(a, b);
+
+		a = 'a123';
+		b = parseInt(a); // NaN - 숫자 시작이 아님
+		console.log(a, b);
+
+		a = '123.45';
+		b = parseInt(a); // 123 - 소수점 버림
+		b = parseFloat(a); // 123.45 - 소수점 포함 허용
+		console.log(a, b);
+
+		a = '';
+		b = parseInt(a); // NaN - 빈 문자열은 변환 불가
+		console.log(a, b);
+
+		a = '    123';
+		b = parseInt(a); // 123 - 앞 공백은 무시
+		console.log(a, b);
+
+		a = '1 2 3';
+		b = parseInt(a); // 1 - 공백 전까지만 처리
+		console.log(a, b);
+
+		a = '0x3F';
+		b = parseInt(a); // 63 - 16진수를 10진수로 변환
+		console.log(a, b);
+
+		a = '0x3F';
+		b = parseInt(a, 16); // 63 - 명시적으로 16진수를 10진수로 변환
+		console.log(a, b);
+
+		a = '0x3F';
+		b = parseInt(a, 10); // 0 - 10진수 해석 불가능, '0'까지만 해석
+		console.log(a, b);
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 문자열을 숫자로 변환하는 방법
+		1. parseInt(string[, radix])
+			- 문자열을 정수(integer)로 변환
+			- 소수점 이하 버림
+			- 공백 앞은 무시 -> 정상 작동
+			- 숫자 아닌 문자 만나면 그 이전까지만 해석
+			- '0x'로 시작하면 16진수로 해석됨 (기본 radix: 16)
+			- 명시적으로 radix(진수)를 지정하는 것이 안전함
+
+		2. parseFloat(string)
+			- 문자열을 실수(float)로 변환
+			- 소수점 포함된 숫자 문자열도 처리 가능
+
+		3. Number(string)
+			- 전체 문자열이 숫자 형식이어야 함
+			- 쉼표나 문자 포함 시 변환 실패 -> NaN 반환
+
+		4. 공백 처리
+			- 앞 공백은 무시됨
+			- 중간 공백이 있는 경우 -> parseInt는 그 앞까지만 처리
+
+		5. 기타
+			- '123a' -> parseInt: 123, Number: NaN
+			- 'a123' -> 둘 다 NaN
+			- '' (빈 문자열) → parseInt: NaN
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

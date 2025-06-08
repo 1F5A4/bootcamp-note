@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer Background Colour</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+#box {
+	width: 300px;
+	height: 300px;
+	border: 1px solid #333;
+	margin: 30px auto;
+}
+</style>
+
+</head>
+<body>
+	<h3>타이머 예제</h3>
+
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		function bg() {
+			let r = Math.floor(Math.random() * 256); // 0~255난수
+			let g = Math.floor(Math.random() * 256);
+			let b = Math.floor(Math.random() * 256);
+
+			let s = `rgb(${r}, ${g}, ${b})`;
+			// console.log(s)
+
+			document.querySelector('#box').style.backgroundColor = s;
+		}
+
+		setInterval('bg()', 100);
+		// setInterval(bg, 100); 함수를 직접 넘기면 더 안전하고 성능이 좋음
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 타이머를 이용해 반복적으로 배경색을 변경하는 방법
+		1. Math.random()
+			- 0 이상 1 미만의 난수 생성
+			- 원하는 범위로 조정하려면 곱하고 Math.floor 사용
+
+		2. setInterval(function or string, milliseconds)
+			- 지정한 시간 간격마다 반복 실행
+			- DOM 요소의 스타일 변경 등 동적 연출에 자주 사용됨
+
+		3. DOM 요소 스타일 변경
+			- 요소.style.backgroundColor 속성을 통해 직접 변경 가능
+			- rgb(r, g, b) 형식의 문자열 사용
+
+		4. 주의사항
+			- 짧은 시간 간격으로 DOM 스타일을 자주 바꾸면 렌더링 성능에 영향 줄 수 있음
+			- 문자열 인자로 함수 호출하는 방식보다는 함수 자체를 넘기는 것이 더 안전하고 성능이 좋음
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

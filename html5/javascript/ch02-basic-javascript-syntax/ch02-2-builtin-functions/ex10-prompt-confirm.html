@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prompt, confirm</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>prompt와 confirm</h3>
+	<!-- prompt는 잘 안 쓰지만, confirm은 잘 씀! -->
+
+	<p>
+		<button type="button" onclick="sub1();">계산기</button>
+		<button type="button" onclick="sub2();">삭제</button>
+	</p>
+
+	<script type="text/javascript">
+		function sub1() {
+			// prompt(): 대화상자를 표시해 사용자에게 수식 입력 받기
+			let s = prompt('수식을 입력 하세요', '');
+			let result = eval(s);
+			alert(s + '=' + result);
+		}
+
+		function sub2() {
+			// confirm(): 확인/취소 버튼이 있는 대화 상자 표시
+			if (confirm('삭제하시겠습니까?')) {
+				alert('삭제되었습니다.');
+			}
+		}
+	</script>
+	
+	
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 사용자 입력을 받거나 확인하는 대화 상자 함수
+		1. prompt(message, default)
+			- 사용자로부터 문자열을 입력받는 대화 상자 표시
+			- 입력값을 문자열로 반환
+			- 취소하면 null 반환
+
+		2. confirm(message)
+			- 확인/취소 버튼이 있는 대화 상자 표시
+			- 확인 시 true, 취소 시 false 반환
+
+		3. eval(string)
+			- 입력된 문자열이 자바스크립트 수식이면 실행하여 계산
+			- 외부 입력에는 보안 주의 필요 (XSS 등)
+
+		4. 사용 주의사항
+			- prompt는 사용자 경험이 떨어져 최근에는 잘 사용하지 않음
+			- confirm은 간단한 사용자 확인 처리에 여전히 많이 사용됨
+
+-------------------------------------------------------------------------------------------------------------------- -->	
+	
+</body>
+</html>
