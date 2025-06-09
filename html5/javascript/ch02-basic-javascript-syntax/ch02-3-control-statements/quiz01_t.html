@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Sum Radio</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<form name="myForm">
+		<p>
+			<input type="radio" name="opt" value="1" checked> 합 
+			<input type="radio" name="opt" value="2"> 짝수합 
+			<input type="radio" name="opt" value="3"> 홀수합
+		</p>
+		<p>
+			<input type="text" name="num" placeholder="숫자를 입력 하세요">
+			<button type="button" onclick="result()">확인</button>
+		</p>
+	</form>
+
+	<hr>
+	<div id="resultLayout"></div>
+
+	<script type="text/javascript">
+		// Selector 쓰면 배열처리 => form name이 낫다!
+
+		function result() {
+			const f = document.myForm; // 폼 참조
+
+			let opt = f.opt.value; // 라디오 선택값
+			let num = f.num.value;  // 입력값
+
+			if (!/^\d{1,}$/.test(num)) { // 숫자만 허용
+				f.num.focus();
+				return;
+			}
+
+			num = parseInt(num);
+
+			let s = 0;
+			let start = opt === '2' ? 2 : 1; // 짝수: 2부터, 나머지는 1부터
+			let step = opt === '1' ? 1 : 2; // 전체합: 1씩, 짝/홀수합: 2씩
+
+			for (let n = start; n <= num; n += step) {
+				s += n;
+			}
+
+			let out = opt === '1' ? '자연수의 합 : '
+			         : (opt === '2' ? '짝수의 합 : ' : '홀수의 합 : ');
+			out += s;
+
+			document.querySelector('#resultLayout').innerHTML = out;
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 폼(form) 요소를 활용한 조건별 누적 합 계산
+		1. radio 버튼 선택값 읽기
+			- form.name 으로 접근 가능
+			- name 속성이 같은 radio 버튼 중 선택된 항목은 form.opt.value 로 가져올 수 있음
+
+		2. input validation
+			- 정규식 /^\d{1,}$/ 로 숫자만 허용 (1자리 이상)
+			- 숫자가 아니면 포커스 이동 후 종료
+
+		3. 누적 합 계산 로직
+			- 선택된 옵션(opt)에 따라 초기값(start)과 증가값(step) 설정
+				- opt === '1' (전체합) → 1부터 1씩 증가
+				- opt === '2' (짝수합) → 2부터 2씩 증가
+				- opt === '3' (홀수합) → 1부터 2씩 증가
+			- for문으로 num까지 누적합 계산
+
+		4. 결과 출력
+			- 선택에 따라 '자연수의 합 / 짝수의 합 / 홀수의 합' 중 하나 선택하여 출력
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

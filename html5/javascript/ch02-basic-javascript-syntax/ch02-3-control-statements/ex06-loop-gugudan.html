@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Loop Gugudan</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<p>
+		<input type="text" id="dan" placeholder="원하는 단">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+	<hr>
+	<div id="resultLayout"></div>
+
+	<script type="text/javascript">
+		function result() {
+			let dan = document.getElementById('dan').value;
+			let out;
+
+			// 1~9 사이 숫자 1자리 정규표현식 검사
+			if (!/^[1-9]{1}$/.test(dan)) { // '/ /' : 정규식 리터널 
+				document.getElementById('dan').focus();
+				return;
+			}
+
+			// 문자열 → 정수 변환
+			dan = parseInt(dan);
+
+			// 출력 문자열 초기화 및 반복 처리
+			out = '<p style="font-weight: 700; color: blue;">**' + dan
+					+ '단 **</p>';
+			for (let n = 1; n <= 9; n++) {
+				out += `${dan} * ${n} = ${dan * n}<br>`;
+			}
+			document.querySelector('#resultLayout').innerHTML = out;
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 구구단 출력: 반복문 + 정규표현식 입력 검사
+		1. 정규표현식으로 입력값 검사
+			- /^[1-9]{1}$/ : 1~9 사이의 숫자 1자리만 허용
+			- 유효하지 않으면 focus 처리 후 함수 종료
+
+		2. 반복문을 통한 단일 단 출력
+			- for문을 사용하여 1~9까지 반복
+			- 각 항목은 innerHTML로 누적하여 출력
+
+		3. 템플릿 리터럴(``)을 사용하여 가독성 향상
+			- ${변수} 형식으로 변수 삽입 가능
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

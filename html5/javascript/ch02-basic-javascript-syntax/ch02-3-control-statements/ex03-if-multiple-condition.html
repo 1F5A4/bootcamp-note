@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>If Multiple Condition</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<p>
+		<input type="text" id="num" placeholder="숫자">
+		<button type="button" onclick="result()">확인</button>
+	</p>
+
+	<script type="text/javascript">
+		function result() {
+			let n = num.value;
+			
+			<!-- -------------------------------------------------------------------------------
+
+			    - id로 접근 가능
+			        - 단, id명과 동일한 함수명이나 변수명이 존재하면 에러 발생 가능
+				
+		        - 다른 방법들:
+					- let n = document.getElementById('num').value;
+					- let n = document.querySelector('#num').value;
+			        
+			-------------------------------------------------------------------------------- -->
+			
+			n = parseInt(n);
+			if (n % 2 === 0 && n % 3 === 0) {
+				alert(n + ' : 2 또는 3의 배수');
+			} else if (n % 2 === 0) {
+				alert(n + ' : 2의 배수');
+			} else if (n % 3 === 0) {
+				alert(n + ' : 3의 배수');
+			} else {
+				alert(n + ' : 2 또는 3의 배수가 아님');
+			}
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- id로 DOM 요소 접근하는 방법
+		1. document.getElementById('id명')
+		2. document.querySelector('#id명')
+		3. 또는 전역 객체처럼 id만 입력해도 접근 가능 (단, 함수명과 충돌 시 에러 발생 가능)
+
+	- 입력값 처리
+		1. input.value는 문자열로 반환됨
+		2. 숫자 계산을 위해 parseInt() 또는 Number() 등으로 변환 필요
+
+	- 조건문 활용
+		1. 복합 조건
+			- if (조건1 && 조건2) 형태로 두 조건을 동시에 만족하는지 확인
+		2. else if 구문
+			- 첫 조건이 거짓일 경우 다음 조건을 평가
+		3. 나머지 처리: else
+
+	- 조건 우선 순위
+		- 가장 구체적인 조건을 먼저 배치하는 것이 중요
+		- 이 예제에서는 "2와 3의 배수"를 가장 먼저 검사함
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

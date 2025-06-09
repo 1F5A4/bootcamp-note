@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>if~else, switch</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>조건문 : if~else, switch</h3>
+
+	<script type="text/javascript">
+		// 조건문의 거짓: false, null, 0, undefined, NaN, ''(빈 문자열)
+		var a;
+		if (a) { // undefined -> falsy -> 거짓 (변수를 선언하고 값을 넣지 않았음 = undefined)
+			console.log('참');
+		} else {
+			console.log('거짓');
+		}
+
+		// Boolean 객체는 null이 아닌 객체이므로 '참'이다 *****
+		var b = new Boolean(false); // 권장하지 않음 *****
+		if (b) { // '참' 출력, 객체이므로 참
+			console.log('참');
+		} else {
+			console.log('거짓');
+		}
+
+		// 객체의 실제 값을 꺼내서 비교해야 정확함
+		if (b.valueOf()) { // b가 가지고 있는 값은 false -> 조건식은 거짓
+			console.log('참');
+		} else {
+			console.log('거짓');
+		}
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 조건문에서 평가되는 참/거짓 값의 기준
+		1. 조건식에서 거짓으로 간주되는 값 (falsy)
+			- false, null, 0, undefined, NaN, ''(빈 문자열)
+
+		2. 조건식에서 참으로 간주되는 값 (truthy)
+			- 위 6가지를 제외한 모든 값
+			- 빈 배열 [], 빈 객체 {}, 문자열 '0', 'false' 등도 모두 참으로 평가됨
+
+		3. Boolean 객체 주의점
+			- new Boolean(false)는 false 값을 가진 객체지만 -> 객체이기 때문에 조건식에서는 '참'
+			- 따라서 Boolean 객체를 직접 조건에 쓰는 것은 권장되지 않음
+			- 값 비교는 반드시 .valueOf()로 실제 값을 꺼내서 확인해야 함
+
+		4. 조건문 기본 구조
+			- if (조건) { ... } else { ... }
+			- 조건이 참일 경우 if 블록 실행, 거짓일 경우 else 블록 실행
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</body>
+</html>

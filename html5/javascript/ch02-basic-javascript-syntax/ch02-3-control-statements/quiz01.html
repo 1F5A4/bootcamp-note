@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Sum Radio</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<form name="myForm">
+		<p>
+			<input type="radio" name="sum" id="allSum" checked="checked">합 
+			<input type="radio" name="sum" id="evenSum"> 짝수합 
+			<input type="radio" name="sum" id="oddSum"> 홀수합
+		</p>
+		<p>
+			<input type="text" id="blankBox" placeholder="숫자 입력">
+			<button type="button" onclick="result()">결과</button>
+		</p>
+	</form>
+
+	<hr>
+	<div id="resultLayout"></div>
+
+	<script type="text/javascript">
+		function result() {
+			const f = document.myForm;
+			let n = document.getElementById('blankBox').value.trim();
+
+			if (!n || isNaN(n)) {
+				alert('숫자를 입력하세요.');
+				document.getElementById('blankBox').focus();
+				return;
+			}
+
+			n = parseInt(n);
+			let s = 0;
+
+			if (document.getElementById('oddSum').checked) {
+				for (let i = 1; i <= n; i += 2) {
+					s += i;
+				}
+			} else if (document.getElementById('evenSum').checked) {
+				for (let i = 0; i <= n; i += 2) {
+					s += i;
+				}
+			} else {
+				for (let i = 0; i <= n; i++) {
+					s += i;
+				}
+			}
+
+			let msg = `결과 : ${s}`;
+			document.querySelector('#resultLayout').innerHTML = msg;
+		}
+	</script>
+</body>
+</html>
