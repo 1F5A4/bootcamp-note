@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exception Handling</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>예외 처리 예제</h3>
+
+	<script type="text/javascript">
+		function sub() {
+			/* 
+			예외 발생 (정의되지 않은 변수 사용)
+			console.log(x);  // Uncaught ReferenceError: x is not defined 
+			console.log('윗줄에서 에러가 발생하면 실행되지 않는다.');  // 실행 안 됨
+			 */
+
+			/* 
+			try ~ catch 문
+			try {
+			console.log(x);
+			console.log('실행되지 않는다.');
+			} catch (e) {
+			console.log('예외발생 : ', e)
+			}
+			console.log('실행됨...');
+			 */
+
+			/* 
+			try ~ catch ~ finally 문
+			try {
+				console.log(x);
+				console.log('실행되지 않는다.');
+			} catch (e) {
+				console.log('예외발생 : ', e)
+			} finally {
+				console.log('예외 발생 유무와 상관 없이 실행')
+			}
+			console.log('실행됨...');
+			 */
+
+		 	// throw 문을 이용한 예외 발생 처리 
+			let n = 5, s = 0;
+			try {
+				if (n < 10) {
+					// 직접 예외 발생 
+					throw '10 이상만 가능합니다.';
+				}
+
+				for (let i = 1; i <= n; i++) {
+					s += i;
+				}
+				console.log('결과 : ' + s);
+
+			} catch (e) {
+				// 예외 처리
+				console.log(e);
+			}
+		}
+
+		sub();
+	</script>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 예외 처리(Exception Handling)
+		1. 예외 발생 예
+			- 정의되지 않은 변수 사용 시 예외 발생
+			- 예: console.log(x); // ReferenceError
+
+		2. try ~ catch
+			- 예외가 발생할 수 있는 코드를 try 블럭에 작성
+			- 예외 발생 시 catch 블럭으로 이동하여 예외 객체(e) 처리
+			- 예외가 발생하지 않으면 catch 블럭은 실행되지 않음
+
+		3. try ~ catch ~ finally
+			- finally 블럭은 예외 발생 여부와 관계없이 항상 실행됨
+			- 리소스 해제, 정리 작업 등에서 유용함
+
+		4. throw 문
+			- 명시적으로 예외를 발생시킬 때 사용
+			- 예: throw '에러 메시지';
+			- 발생된 예외는 catch 블럭에서 처리됨
+
+		5. 실행 흐름 정리
+			- 예외 발생 전까지는 try 블럭 내 코드 순차 실행
+			- 예외 발생 시 즉시 catch 블럭으로 이동, 이후 finally 실행
+			- finally 이후 남은 외부 코드 실행
+
+		6. 유의사항
+			- throw로 던지는 값은 문자열, 객체 등 자유롭게 지정 가능
+			- catch 블럭에서는 예외 객체의 내용 확인 가능
+			- 예외 처리를 하지 않으면 프로그램 중단됨
+
+-------------------------------------------------------------------------------------------------------------------- -->
+	
+</body>
+</html>
