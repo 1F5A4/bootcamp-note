@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function Closure Counter</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>클로저(closures)</h3>
+
+	<script type="text/javascript">
+		// 내부 함수는 클로저를 형성
+		var seq = function() {
+			let n = 0;
+			return function() {
+				return ++n;
+			}
+		};
+
+		var fn = seq();
+		console.log(fn()); // 1
+		console.log(fn()); // 2
+		console.log(fn()); // 3
+	</script>
+</body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 클로저(Closure)를 이용한 카운터 함수 만들기
+		1. 클로저는 외부 함수가 종료되어도, 내부 함수가 외부 변수에 접근 가능
+		2. 이 예제는 '값을 기억'하는 클로저의 전형적인 활용 사례
+
+---------------------------------------------------------------------------------------------------------------------- -->
+
+</html>

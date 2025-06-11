@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function Arrow</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>함수 - arrow function</h3>
+
+	<script type="text/javascript">
+		var n;
+		
+		// 표현식 방식
+		var sub1 = function(args) {
+			return args.length;
+		};
+		
+		n = sub1('seoul');
+		console.log(n);  // 5
+		
+		
+		
+		// 화살표 함수
+		var sub2 = (args) => { return args.length; };
+		n = sub2('seoul kroea');
+		console.log(n);  // 11
+		
+		
+		
+		// 파라미터가 '하나'인 경우에는 주변 괄호 생략 가능 
+		var sub3 = args => { return args.length; };
+		n = sub3('java');
+		console.log(n);  // 4
+		
+		
+		// 화살표 함수의 문장이 'return 반환값;'만 존재하는 경우 'return'과 중괄호({})를 생략할 수 있다. 
+		var sub4 = args => args.length;
+		n = sub4('java spring');
+		console.log(n);  // 11
+		
+		
+		// 1초 후에 '하이'이라고 alert 창 띄우기
+		/* setTimeout(function() {
+			alert('하이');
+		}, 1000);
+		 */
+		
+		// 화살표 함수로 
+		setTimeout(() => {alert('하이');}, 1000);
+		 
+		// return이 아니더라도 한 문장이면 괄호 생략 가능!
+		setTimeout(() => alert('하이'), 1000);
+	</script>
+</body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 화살표 함수 (Arrow Function)
+
+		1. 기본 문법
+			- const 함수명 = (매개변수) => { return 반환값; };
+
+		2. 축약 문법
+			- 매개변수가 하나일 경우 괄호 생략 가능 → args => ...
+			- 함수 본문이 return 한 줄일 경우 중괄호와 return 생략 가능 → args => 결과값
+
+		3. 사용 예
+			- 익명 함수 대체
+			- 콜백 함수로 자주 사용됨 (map, filter, setTimeout 등)
+
+		4. 주의점
+			- 화살표 함수는 자신만의 this 바인딩을 가지지 않음
+			- 생성자 함수로 사용할 수 없음
+
+		5. 기타
+			- 한 줄 문장은 중괄호 없이도 작성 가능 (ex: setTimeout(() => alert('하이'), 1000);)
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function Parameter Default Rest</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>함수 - 매개변수</h3>
+
+	<script type="text/javascript">
+		// 1. 기본값 미지정 - 매개변수의 기본값은 undefined 
+		function add1(a, b) {
+			return a + b;
+		}
+		console.log(add1(10)); // 10 + undefined -> NaN
+		
+		// 2. 조건식으로 기본값 설정
+		function add2(a, b) {
+			b = b ? b : 0;
+			// b = b || 0;
+			return a + b;
+		}
+		console.log(add2(10)); // 10 + 0 -> 10
+		console.log(add2(10, 5)); // 10 + 5 -> 15
+		
+		// 3. ES6 디폴트 매개변수 
+		function add3(a, b = 0) { // 초기값 0으로 설정 (b = 0)
+			return a + b;
+		}
+		console.log(add3(11)); // 11
+		console.log(add3(11, 5)); // 16
+		
+		function add4(a = 1, b) { // 초기값 5로 설정 (a = 1)
+			console.log(a, b); 
+		}
+		add4(); // 1 undefined
+		add4(5); // 5 undefined
+		
+		// 4. Rest 매개변수 (...args) 
+		// cf. 자바에서 (...args)는 부정인수
+		function add5(...args) {
+			let s = 0;
+			for (let n = 0; n < args.length; n++) {
+				s += args[n];
+			}
+			return s;
+		}
+		
+		console.log(add5(1,2,3,4,5)); // 15, arguments 대신 써도 됨 
+	</script>
+</body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 함수의 매개변수 처리 방법 심화
+		1. 기본 매개변수 미지정 시
+			- undefined가 전달됨
+			- 연산 시 NaN 발생 가능 → 예외처리 필요
+
+		2. 조건식 기본값 처리 방식
+			- b = b || 0 → b가 falsy일 경우 0으로 처리 (단, 0도 falsy이므로 주의)
+
+		3. ES6 디폴트 매개변수
+			- 함수 선언 시 기본값을 미리 지정 가능
+			- a = 1, b = 0 등 매개변수 위치 및 순서 중요
+
+		4. Rest 파라미터 (...args)
+			- 전달받은 나머지 인자들을 배열로 수집
+			- 가변 인자 함수 구현 시 유용
+			- 'arguments' 보다 더 직관적이며 배열 메서드 사용 가능
+
+---------------------------------------------------------------------------------------------------------------------- -->
+
+</html>

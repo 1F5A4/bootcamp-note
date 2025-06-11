@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>함수 - 매개변수</h3>
+
+	<script type="text/javascript">
+		function sub1(a, b) {
+			console.log(a, b);
+		}
+
+		// 에러 없음. undefined 존재. 
+		// java(중복정의 함수)와 다르게 매개변수 갯수가 달라도 에러 없음.
+		sub1(); // undefined undefined
+		sub1(1); // 1 undefined 
+		sub1(1, 2); // 1 2 
+		sub1(1, 2, 3); // 1 2 <- 초과된 인자는 무시됨 
+		console.log('-------------------------------');
+
+		function sub2() {
+			for (let i = 0; i < sub2.arguments.length; i++) { // 유사배열(arguments)
+				console.log(sub2.arguments[i]);
+			}
+		}
+		sub2('홍길동', '자바', 95);
+		console.log('-------------------------------');
+
+		function sub3(name) {
+			console.log(name); // 첫 번째 매개변수 (이름 2번 나옴) 
+
+			// for(let i = 0; i < sub3.arguments.length; i++) {  // 유사배열(arguments)
+			for (let i = 1; i < sub3.arguments.length; i++) { // 이름 1번만 나오게 하려면 i = 1; // 매개변수 없어도 다 받아낼 수 있다!
+				console.log(sub3.arguments[i]); // 나머지 인자 출력 
+			}
+		}
+		sub3('홍길동', '자바', 95);
+		console.log('-------------------------------');
+		
+		// ES6 이후에는 rest 파라미터를 사용하는 것이 권장됨
+		function sub4(name, ...rest) {
+			console.log(name);
+			console.log(rest); // 배열로 전달됨
+		}
+	</script>
+</body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 함수 매개변수와 arguments 객체
+		1. 자바스크립트는 함수 호출 시 전달인자의 개수와 관계없이 실행됨
+			- 전달인자가 부족하면 → undefined
+			- 많으면 → 초과분 무시
+
+		2. arguments 객체
+			- 함수 내에서 자동으로 생성되는 유사 배열 객체
+			- 실제 매개변수 이름과 관계없이 전달된 모든 인자를 담고 있음
+			- 반복문을 통해 모든 인자에 접근 가능
+			- length, index 등 배열처럼 동작하지만 실제 배열은 아님
+
+		3. 유사 배열 처리 주의
+			- 실제 배열 메서드는 사용할 수 없음 (예: `map`, `forEach` 등)
+			- 필요시 `Array.prototype.slice.call(arguments)` 등으로 변환해야 함
+
+		4. 향후 대체 방식
+			- ES6 이후에는 ...rest 파라미터 사용 권장
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</html>

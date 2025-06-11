@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function Declaration Call</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+	<h3>함수 - 함수작성 및 호출</h3>
+
+	<script type="text/javascript">
+		var n;
+
+		// 함수 선언문 방식 *****
+		function sub1(x, y) {
+			let s = x + y;
+			return s;
+		}
+
+		// 함수 호출 
+		n = sub1(10, 5);
+		console.log(n); // 15
+
+		// 함수 표현식 방식 (익명함수) *****
+		var sub2 = function(x, y) { // 익명 함수 - 함수명이 없음
+			return x + y;
+		}; // 수식이므로 세미콜론 필수
+		var plus = sub2; // 밖에서 부르기 위한 이름 할당
+		n = sub2(10, 20);
+		console.log(n); // 30
+
+		n = plus(15, 20);
+		console.log(n); // 35
+
+		// 기명 함수 표현식 방식 (내부 호출용 이름만 존재) *****
+		var sub3 = function add(x, y) {
+			return x + y;
+		};
+
+		n = sub3(5, 2);
+		console.log(n); // 7
+
+		// n = add(5, 3);  // 에러
+		// 기명식 함수 표현식에의 함수 이름은 외부 접근 불가
+
+		// 재귀호출
+		var sub4 = function sum(n) {
+			return n > 1 ? n + sum(n - 1) : n; // 재귀호출
+		};
+		n = sub4(10);
+		console.log(n); // 55
+
+		// Function() 생성자를 이용한 함수 *****
+		var sub5 = new Function('x', 'y', 'return x + y;');
+		n = sub5(5, 6);
+		console.log(n); // 11
+
+		// 즉시 실행 함수 (IIFE) - 정의함과 동시에 함수를 바로 실행 
+		var s = (function(a, b) {
+			return a + b;
+		})(3, 12);
+		console.log(s); // 15
+
+		(function(a, b) {
+			console.log(a + b);
+		})(3, 4); // 7
+	</script>
+</body>
+
+
+<!-- CONCEPT -----------------------------------------------------------------------------------------------------------
+
+	- 함수 정의 및 호출 방법
+		1. 함수 선언문 (Function Declaration)
+			- function 함수명(매개변수) { ... }
+			- 호이스팅(코드 실행 전에 미리 등록됨) 가능
+
+		2. 함수 표현식 (Function Expression)
+			- var 변수명 = function(매개변수) { ... };
+			- 익명 함수이므로 변수명을 통해 호출
+			- 호이스팅 불가
+
+		3. 기명 함수 표현식
+			- var 변수명 = function 함수명() { ... };
+			- 함수명은 내부에서만 사용 가능
+			- 외부에서는 변수명으로만 호출 가능
+
+		4. 재귀 호출 함수
+			- 함수 내부에서 자기 자신을 다시 호출
+			- 종료 조건 반드시 필요
+
+		5. Function 생성자
+			- new Function('매개변수1', '매개변수2', 'return 문') 형태
+			- 문자열 기반으로 동작하므로 잘 쓰이지 않음
+
+		6. 즉시 실행 함수 (IIFE, Immediately Invoked Function Expression)
+			- 정의하자마자 즉시 실행됨
+			- 함수 전체를 괄호로 감싸고, 마지막에 ( ) 실행 구문 사용
+
+		7. 주의사항
+			- 표현식 뒤에는 세미콜론 필수
+			- 함수명 중첩 또는 범위 밖 접근 주의
+
+-------------------------------------------------------------------------------------------------------------------- -->
+
+</html>
